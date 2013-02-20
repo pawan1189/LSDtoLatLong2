@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta name="viewport" content="width=device-width; height=device-height; user-scalable=yes; initial-scale=1.0"/> 
+<meta name="HandheldFriendly" content="True" />
+<meta name="x-blackberry-defaultHoverEffect" content="true" />
+<title>LSDtoLatLong</title>
+<link type="text/css" rel="stylesheet" href="css/index.css" />
+<script src="phonegap.js"></script>
+<script type="text/javascript" src="js/home.js"></script>
+<script type="text/javascript" src="js/LatLong.js"></script>
+<script type="text/javascript" src="js/tATSCoord.js"></script>
+<script type="text/javascript" src="js/email.js"></script>
+<script type="text/javascript" src="js/about.js"></script>
+<script type="text/javascript" src="js/exit.js"></script>
+<script src="http://maps.google.com/maps/api/js?sensor=true"></script>
+</head>
+<body   marginwidth="3" background="www/background.png"  width="100%" height="100%">
+<div id="buttons" class="buttonPanel">
+  <a id="btnHome" class="tabButton" onmouseover="doHover('btnHome')"  onclick="selectHome();">
+  <div> <img src="www/home.png" height="57"/> 
+    <!--<p>Home</p>--> 
+  </div>
+  </a>
+   <a id="btnAbout" class="tabButton" onmouseover="doHover('btnAbout')"  onclick="selectAbout();">
+  <div><img src="www/about.png"/><!-- <p>About</p>--> 
+  </div>
+  </a> 
+  
+  <a id="btnEmail" class="tabButton" onmouseover="doHover('btnEmail')"  onclick="selectEmail();sendEmail();">
+  <div> <img src="www/email.png"/> 
+    <!-- <p>Email</p> -->
+  </div>
+  </a> 
+  
+  <a id="btnExit" class="tabButton" onmouseover="doHover('btnExit')"  onclick="selectExit();showExit();">
+  <div> <img src="www/exit.png"/> 
+    <!-- <p>Exit</p> -->
+  </div>
+  </a>
+</div>
+<div class="tabSeparator"></div>
+
+<!--<label class="label" > Enter LSD Coordinates</label>-->
+<div id="home" class="tab" style="background-repeat:repeat">
+<h5 style="text-align:center">Enter LSD Coordinates</h5>
+<!--<div class="label"  >Enter LSD Coordinates</div>-->
+<div class="main-panel" >
+  <div  class="selection"  >
+    <label>Quarter</label>
+    <br/>
+    <label>(1-16)</label>
+    <br/>
+    <input type="text" name="Quarter" value="0" id="qua" size="2" onfocus="resetwww()" />
+  </div>
+  <div class="selection"  >
+    <label>Section</label>
+    <br/>
+    <label>(1-36)</label>
+    <br/>
+    <input type="text" name="Section" value="0" id="sec"  size="2" onfocus="resetwww()"/>
+  </div>
+  <div class="selection"  >
+    <label>TownShip</label>
+    <br/>
+    <label>(1-126)</label>
+    <br/>
+    <input type="text" name="TownShip"  value="0" id="town" size="2" onfocus="resetwww()"/>
+  </div>
+  <div class="selection"  >
+    <label>Range</label>
+    <br/>
+    <label>(1-36)</label>
+    <br/>
+    <input type="text" name="Range" value="0" id="range" size="2" onfocus="resetwww()"/>
+  </div>
+  <div class="selection"  >
+    <label>Meridian</label>
+    <br/>
+    <label>(1-6)</label>
+    <br/>
+    <input type="text" name="Meridian" value="0" id="meridian" size="2" onfocus="resetwww()" />
+  </div>
+</div>
+<br/>
+<br/>
+<br/>
+<br/>
+<div id="buttons" class="buttonPanel2" >
+<button id="btnLatLong" class="mapButton" onmouseover="doHover('btnLatLong')"  onclick="selectLatLong();" >Lat/Long</button>
+
+<button id="btnGoToMap" class="mapButton" onmouseover="doHover('btnGoToMap')"  onclick="location.href='map.html';" >Show On Map</button>
+</div>
+<br/>
+<br/>
+<br/>
+<br/>
+<div id="coordinates"> </div>
+</div>
+
+
+<div id="about" class="tab" >
+  <div class="main-panel" >   
+<h2><font color="#0F9">i</font> about </h2>
+<h3><font color="#0F9">About LSD2LATLONG</font> 2.0.0</h3>
+<p>TechValens proprietary © 2011 TechValens Software</p>
+<p>For technical support, or when you have suggestions or comments, please mail at:support@techvalens.com.</p>
+<p>LSD:- Alberta, Saskatchewan, and parts of Manitoba and British Columbia are mapped on a grid system into townships of approximately 36 square miles (6 mi. x 6mi.). Each township consists of 36 sections (1 mi. x 1 mi). Each section is further divided into 16 legal subdivisions (LSDs). The numbering system for sections and LSDs uses a back-and-forth system where the numbers may be increasing either to the right or the left in the grid. Since the DLS system is based on actual survey data, there can be gaps in the coverage.Each section is further divided into a legal subdivision (LSD). Each LSD is a square of 1320 ft (402m) per side.
+</p>
+<br/>
+<p>Latitude:- Latitude is a measure of how far a point is from the Earths equator. Latitudes may vary from 0 to 90 in both north and south directions.
+</p>
+<p>Longitude:- Longitude is an angular distance that is measured using the prime meridian as a reference. The prime meridian is an imaginary line that connects the North and south poles while passing through Greenwich, England. The ranges for longitudes are 0 - 180 East and West.
+</p>
+<p>DISCLAIMER:- This application has been designed to give you an easy way to LSD coordinates to Latitude/Longitide (Decimal) via best knowledge. WITHOUT LIMITING THE GENERALITY OF THE FOREGOING, THE LICENSED APPLICATION PROVIDES DATA AND INFORMATION RESULTS THAT RELY UPON INFORMATION PROVIDED BY THIRD PARTIES AND THESE RESULTS MAY NOT ALWAYS BE CORRECT, ACCURATE RELIABLE OR ERROR FREE; TECHVALENS IS NOT RESPONSIBLE FOR SUCH INACCURACIES OR ERRORS. Default email id(default email account activated in your device) will be used in order to send email from this app. Techvalens accepts no liability for the content of this email, or for the consequences of any actions taken on the basis of the information provided.
+</p>
+<br/>
+<p>support@techvalens.com</p>
+<p>Developed By:-Pawan K Gupta</p>
+<p>http://www.techvalens.com</p>
+</div>
+
+</div>
+
+<div id="email" class="tab" >
+</div>
+
+
+<div id="exit" class="tab"">
+</div>
+
+</body>
+</html>

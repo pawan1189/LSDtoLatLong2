@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<widget xmlns:rim="http://www.blackberry.com/ns/widgets" version="2.0.0" rim:header="RIM-Widget:rim/widget" xmlns="http://www.w3.org/ns/widgets">
+  <name>LSDtoLatLong</name>
+  <description>LSDtoLatLonggg</description>
+  <author rim:copyright="Techvalens Software Systems">Techvalens Software Systems</author>
+  
+  <feature id="blackberry.ui.dialog" required="true" version="2.0.0"/>
+  
+  <access subdomains="true" uri="*"/>
+  <access subdomains="true" uri="http://google.com"/>
+  <access subdomains="true" uri="http://maps.google.com/maps/api/js"/>
+  <access subdomains="true" uri="http://gstatic.com"/>
+  <access subdomains="true" uri="http://googleapis.com"/>
+  
+  <icon rim:hover="false" src="www/Logo.png"/>
+  <content src="index.html"/>
+ 
+  
+  <rim:loadingScreen backgroundColor="#808080" backgroundImage="www/mapsplash.png" onFirstLaunch="true"/>
+  <rim:transitionEffect type="slideOver" duration="1000" direction="left"/>
+  <rim:navigation mode="focus"/>
+ 
+</widget>
